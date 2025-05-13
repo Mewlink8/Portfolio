@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - BIANCHI Mathieu</title>
+    <style>
+        body {
+            font-family: "Courier New", monospace;
+            margin: 0;
+            background-color: #021a3d;
+            color: #c9d1d9;
+        }
+
+        header {
+            color: #58a6ff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav button {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        nav button:hover {
+            background-color: #2ea043;
+            box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1;
+        }
+
+        .content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .visible {
+            display: block;
+        }
+
+        .sub-menu {
+            margin-top: 20px;
+        }
+
+        .sub-menu button, .sub-content button {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .sub-menu button:hover, .sub-content button:hover {
+            background-color: #2ea043;
+            box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1;
+        }
+
+        .competence-menu {
+            margin-top: 20px;
+        }
+        .competence-menu button {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .competence-menu button:hover {
+            background-color: #3c8d89;
+            box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1;
+        }
+
+        .proof {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 5px;
+        }
+
+        
+        h2, h3, h4, h5, h6 {
+            color: #c9d1d9;
+            text-shadow: 0 0 5px #c9d1d9, 0 0 10px #c9d1d9, 0 0 20px #c9d1d9, 0 0 30px #c9d1d9, 0 0 40px #c9d1d9, 0 0 50px #c9d1d9, 0 0 60px #c9d1d9;
+            transition: text-shadow 0.5s ease-in-out;
+        }
+
+        h1 {
+            color: #58a6ff;
+            text-shadow: 0 0 5px #58a6ff, 0 0 10px #58a6ff, 0 0 20px #58a6ff, 0 0 30px #58a6ff, 0 0 40px #58a6ff, 0 0 50px #58a6ff, 0 0 60px #58a6ff;
+            transition: text-shadow 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Mon Portfolio</h1>
+    </header>
+
+    <nav>
+        <button onclick="showContent('accueil')">Accueil</button>
+        <button onclick="showContent('projet_professionnel')">Projet Professionnel</button>
+        <!--<button onclick="showContent('projet_personnel')">Projet Personnel</button>-->
+        <button onclick="showContent('CV')">CV</button>
+    </nav>
+
+    <div id="accueil" class="content visible">
+        <h2>
+            Bienvenue sur mon Portfolio
+        </h2>
+        <p style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+            Étudiant en 3ème année du BUT Réseaux et Télécommunications (R&T),
+            <br>
+            passionné par l'innovation et les technologies de l'information. 
+            <br><br>
+            Ce portfolio est une vitrine de mes compétences, de mes projets académiques et personnels, ainsi que de mes réalisations concrètes dans les domaines des réseaux et des télécommunications.
+        </p> 
+        
+    </div>
+
+    <div id="projet_professionnel" class="content hidden">
+        <h2>
+            Projet Professionnel
+        </h2>
+        <p style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+            Découvrez mes projets professionnels. 
+            <br><br>
+            Chaque réalisation illustre mes compétences techniques, mon savoir-faire et mon engagement dans ce domaine en constante évolution.
+        </p>
+        
+        <div class="sub-menu">
+            <!-- 
+            <button onclick="showSubContent('bac')">BAC STI2D</button>
+            -->
+            <button onclick="showSubContent('but')">BUT R&T</button>
+            <!--
+            <button onclick="showSubContent('master')">Master</button>
+            -->
+        </div>
+        <!-- 
+        <div id="bac" class="sub-content hidden">
+            <h3>BAC STI2D</h3>
+            <button onclick="showProof('premiere1')">Première</button>
+            <button onclick="showProof('terminale2')">Terminale</button>
+        </div>
+        !-->
+        <div id="but" class="sub-content hidden">
+            <button onclick="showSubContent('but1')">1ère Année</button>
+            <button onclick="showSubContent('but2')">2ème Année</button>
+            <button onclick="showSubContent('but3')">3ème Année</button>
+        </div>
+        <!-- 
+        <div id="master" class="sub-content hidden">
+            <button onclick="alert('Détails sur la 1ère année de Master')">1ère Année</button>
+            <button onclick="alert('Détails sur la 2ème année de Master')">2ème Année</button>
+        </div>
+        --> 
+        <!-- Competence Sections -->
+        <div id="but1" class="sub-content hidden">
+            <h3>1ère Année - Compétences</h3>
+            <div class="competence-menu">
+                <button onclick="showCompetenceContent('comp1')">Administrer les réseaux et L'Internet</button>
+                <button onclick="showCompetenceContent('comp2')">Connecter les entrepirses et les usagers</button>
+                <button onclick="showCompetenceContent('comp3')">Créer des outils et applications informatiques pour les R&T</button>
+            </div>
+        </div>
+        <div id="but2" class="sub-content hidden">
+            <h3>2ème Année - Compétences</h3>
+            <div class="competence-menu">
+                <button onclick="showCompetenceContent('comp6')">Administrer les réseaux et L'Internet</button>
+                <button onclick="showCompetenceContent('comp7')">Connecter les entrepirses et les usagers</button>
+                <button onclick="showCompetenceContent('comp8')">Créer des outils et applications informatiques pour les R&T</button>
+                <button onclick="showCompetenceContent('comp9')">Administer un système d'information sécurisé</button>
+                <button onclick="showCompetenceContent('comp10')">Surveiller un système d'information sécurisé</button>
+                <button onclick="showCompetenceContent('comp16')">Stage de 2 ème année</button>
+            </div>
+        </div>
+        <div id="but3" class="sub-content hidden">
+            <h3>3ème Année - Compétences</h3>
+            <div class="competence-menu">
+                <button onclick="showCompetenceContent('comp11')">Administrer les réseaux et L'Internet</button>
+                <button onclick="showCompetenceContent('comp12')">Connecter les entrepirses et les usagers</button>
+                <button onclick="showCompetenceContent('comp13')">Créer des outils et application informatiques pour les R&T</button>
+                <button onclick="showCompetenceContent('comp14')">Administer un système d'information sécurisé</button>
+                <button onclick="showCompetenceContent('comp15')">Surveiller un système d'information sécurisé</button>
+            </div>
+        </div>
+
+        <!-- Proof Sections -->
+        <!-- BAC --> 
+        <div id="premiere1" class="proof hidden">Voici les projets que j'ai effectués en Première.</div>
+        <div id="terminale2" class="proof hidden">Voici les projets que j'ai effectués en Terminale.</div>
+        <!-- BAC -->
+        <!-- BUT R&T 1ere année -->
+        <div id="comp1" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1000px;">
+
+                <!-- Introduction de la compétence -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Administrer les réseaux et l'Internet</h3>
+                    J'ai acquis la compétence "Administration des réseaux et d'Internet" grâce à mes multiples expériences liées à cette compétence. 
+                    <br>
+                    Par exemple, j'ai réussi à déployer des machines virtuelles en utilisant VmWare, ainsi qu'à mettre en place différents services tels qu'un serveur DHCP et des Vlan's. 
+                    <br>
+                    J'ai pu réaliser ces tâches lors de nombreux travaux pratiques axés sur les réseaux, ce qui me permet de valider une partie de cette compétence.
+ 
+                    <br><br>
+                    De plus, j'ai démontré ma compétence en étudiant et en réalisant des FFT (Transformée de Fourier rapide), ainsi que dans tous les aspects de l'environnement électronique.
+                    <br>
+                    J'ai effectué des câblages Arduino, utilisé des microcontrôleurs et exploité un générateur basse fréquence. Ce qui me permet de valider les AC suivants :
+                    <br><br><b>AC11.01 | Maîtriser les lois fondamentales de l’électricité </b>
+                        <b> afin d’intervenir sur des équipements de réseaux et télécommunications</b>
+                    <br><b>AC11.02 | Comprendre l'architecture et les fondements des systèmes numériques, </b>
+                        <b> les principes du codage de l'information, des communications et de l'Internet</b>
+                    <br><b>AC11.03 | Configurer les fonctions de base du réseau local</b>
+                    <br><b>AC11.04 | Maîtriser les rôles et les principes fondamentaux</b>
+                         <b> des systèmes d’exploitation afin d’interagir avec ceux-ci pour la</b>
+                        <b> configuration et l'administration des réseaux et services fournis</b>
+                    <br><b>AC11.05 | Identifier les dysfonctionnements du réseau local et savoir les signaler</b>
+                    <br><b>AC11.06 | Installer un poste client, expliquer la procédure mise en place</b>
+                    <br>
+                
+                    Les SAÉ qui vont suivre, vont pouvoir affirmer mes propos et les illustrer avec mes preuves.
+                </div>
+                     
+                    <!-- Exemple de réalisations (Texte + Visuel) -->
+                    <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 20px; border-radius: 10px; ">
+                        <!-- Texte -->
+                        <div style="flex: 2; text-align: justify; line-height: 1.6;">
+                            <h3 style="font-size: 20px; margin-bottom: 10px;">Sensibilisation à l'hygiène informatique <br>et à la cybersécurité</h3>
+                            La première SAE s’intitule "Sensibilisation à l'hygiène informatique et à la cybersécurité".
+                            <br><br>
+                            L'objectif de cette SAE était de saisir les défis et les dangers de l'informatique, ainsi que de présenter différentes mesures préventives permettant de se prémunir contre ces risques. 
+                            <br><br>
+                            Après avoir terminé cette activité, nous avons eu l'occasion de créer une vidéo et de faire une présentation orale en groupes de trois sur un sujet de cybersécurité assigné par l'enseignant. 
+                            <br><br>
+                            Mon groupe et moi avons été chargés du sujet suivant : Sécuriser le post client (windows, linux)
+                            <br><br>
+                            Voici le lien de la présentation de ce sujet : <a href="https://www.canva.com/design/DAFkwO2RU_4/VCYjxRXkF5Yu-EmmS_XkNg/edit?utm_content=DAFkwO2RU_4&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton" target="_blank" style="color: #00ff00; text-decoration: none;">Présentation sur Canva</a>
+                        </div>
+                    </div>    
+                    <div style="display: flex; flex-direction: row; align-items: flex-start; gap: 20px; padding: 20px; border-radius: 10px; ">                    
+                        <!-- Image -->
+                        <div style="flex: 2; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                            <img src="projet_EVENG.png" alt="Mise en place d'un réseau local" style="width: 100%; border-radius: 10px; ">
+                            <br><br>
+                            <img src="plan_adressage.png" alt="Mise en place d'un réseau local" style="width: 80%; border-radius: 10px; ">
+                        </div>
+                        <!-- Texte -->
+                        <div style="flex: 2; text-align: justify; line-height: 1.6;">
+                            <h3 style="font-size: 20px; margin-bottom: 10px;">S’initier aux réseaux informatiques </h3>
+                            La deuxième SAE s'intitule "S’initier aux réseaux informatiques".
+                            <br><br>
+                            La SAE 1.02 avait pour objectif de mettre en pratique les différents concepts de réseaux abordés au cours de l'année, ainsi que d'explorer de nouveaux concepts pour comprendre le fonctionnement d'un réseau informatique de base.
+                            <br><br>
+                            Dans ce cadre, nous devions configurer le réseau d'une entreprise (succursale) en suivant un cahier des charges fourni, en créant une maquette réseau. 
+                            <br><br>
+                            Pour cela, nous avons utilisé le logiciel EVE NG (Emulated Virtual Environment Next Generation).
+                            <br>
+                            EVE-NG est un logiciel d'émulation de réseau polyvalent, compatible avec plusieurs vendeurs, et ne nécessitant pas l'installation d'un client.
+                            <br><br>
+                            Le cahier des charges nous demandait de paramétrer et configurer un routeur, ainsi que de mettre en place un serveur Linux en tant que serveur DHCP, etc.
+                            <br>
+                            Ci-dessous, vous trouverez les preuves de ce projet : 
+                        </div>
+                    </div>    
+                </div>
+            
+            </div>
+            
+        </div>
+        <div id="comp2" class="competence-content hidden">
+            <h3 style="text-align: center;"> Connecter les entrepirses et les usagers </h3>
+            <p style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;  ">
+                Je démontre ma compétence dans le domaine de "Connecter les entreprises et les usagers" grâce à mes expériences concrètes. 
+                <br>
+                J'ai déjà réalisé plusieurs projets liés à cette compétence, tels que l'établissement de devis pour l'installation d'une infrastructure réseau ou la mise en place d'une borne Wifi. 
+                <br><br>
+                J'ai créé et connecté des câbles RJ45, puis analysé la puissance, la portée et les caractéristiques de ces installations. 
+                <br>
+                Grâce à ces expériences, j'ai acquis des connaissances pratiques qui me permettent de valider l'AC suivant :
+                <br><b>AC12.03 | Déployer des supports de transmission</b>
+                <br>
+                J'ai également étudié les différentes caractéristiques d'un signal, telles que le dbm, les pertes de puissance et le bilan de puissance. 
+                <br>
+                Ces connaissances seront pleinement validées dans une prochaine SAÉ (2.02) intitulée "Mesurer et caractériser un signal ou un système". 
+                <br><br>
+                De plus, j'ai configuré des dispositifs de transmission spécifiques à la téléphonie d'entreprise lors de travaux pratiques, ce qui me permet de valider les AC suivants :
+                <br><b>AC12.01 | Mesurer, analyser et commenter les signaux</b>
+                <br><b>AC12.02 | Caractériser des systèmes de transmissions</b>
+                    <br><b>élémentaires et découvrir la modélisation mathématique de leur fonctionnement</b>
+                <br><b>AC12.04 | Connecter les systèmes de ToIP</b>
+                <br>
+                Les prochaines SAÉ que je vais aborder renforceront encore davantage mes compétences dans ces domaines.
+            </p>
+            
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 20px auto; max-width: 1200px; gap: 20px;">
+
+                <!-- Bloc de texte aligné à gauche -->
+                <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                    <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE 1.03 | Découvrir un dispositif de transmission</h3>
+                    La première SAE s’intitule "Découvrir un dispositif de transmission".
+                    <br><br>
+                    L'objectif de cette SAE était d'explorer le réseau Wifi d'un bâtiment du campus et de créer une connexion par câble cuivre pour installer une borne Wifi dans une pièce spécifique en vue d'une analyse approfondie.
+                    <br><br>
+                    Après avoir réalisé les raccordements nécessaires pour notre borne, nous avons travaillé en groupes de quatre pour générer plusieurs cartes de chaleur Wifi 
+                    (représentant la couverture et l'intensité du signal sans fil) des différents réseaux Wifi présents. 
+                    <br><br>
+                    Nous avons également analysé la portée et la puissance émise par les différentes bornes Wifi en utilisant le logiciel Acrylic Wifi Analyser.
+                    <br><br>
+                    À la fin de cette activité, nous avons rédigé un rapport détaillé et réalisé une présentation orale sur nos analyses et nos expérimentations concernant les différents réseaux Wifi. 
+                    <br><br>
+                    Vous trouverez ci-dessous la présentation orale effectuée ainsi que des photos illustrant notre travail.
+                </div>
+            
+                <!-- Section pour les photos à droite -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; align-items: center;">
+                    <img src="photo1.png" alt="Photo de la SAE" style="width: 50%; border-radius: 10px; ">
+                    <img src="photo2.jpg" alt="Photo supplémentaire" style="width: 50%; border-radius: 10px; ">
+                </div>
+                    
+            
+            </div>
+            
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; max-width: 1200px; gap: 20px;">
+
+                <!-- Section pour les photos à gauche -->
+                <div style="flex: 1; display: flex; flex-direction: column; gap: 10px; align-items: center; justify-content: flex-end;">
+                    <img src="arduino_circuit.jpg" alt="Circuit Arduino" style="width: 50%; border-radius: 10px; ">
+                    <img src="code_example.png" alt="Exemple de code" style="width: 100%; border-radius: 10px; ">
+                </div>
+            
+                <!-- Bloc de texte aligné à droite -->
+                <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                    <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE 2.02 | Mesure et caractérisation d'un signal ou d'un système</h3>
+                    La deuxième activité d'apprentissage expérimentée dans le cadre de cette compétence est intitulée "Mesurer et caractériser un signal ou un système". 
+                    <br><br>
+                    L'objectif de cette activité était d'appliquer les différentes notions abordées en classe concernant les signaux et le codage de l'information. 
+                    <br><br>
+                    Pour ce faire, nous avons mis en place un système permettant de reconnaître les notes d'une pièce de musique spécifique à l'aide de LED qui s'allument en fonction de la note jouée par l'Arduino et du signal injecté à l'aide de l'Analog Discovery 2 de Digilent. 
+                    <br><br>
+                    Nous avons utilisé plusieurs logiciels, tels que Arduino, MatLab et WaveForm.
+                    <br><br>
+                    À la fin de cette activité, nous avons réalisé plusieurs vidéos pour valider notre projet, dans lesquelles nous avons présenté le circuit Arduino, ainsi que les différents codes et algorithmes utilisés pour assurer le bon fonctionnement du programme.
+                    <br><br>
+                    Ci-dessous, vous trouverez une image du circuit Arduino que nous avons créé et une photo d'un des codes utilisés pour jouer la musique.
+                </div>
+            </div>
+            
+        </div>
+        <div id="comp3" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Premier paragraphe centré -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+                    <h3 style="text-align: center; font-size: 20px; margin-bottom: 10px;">Créer des outils et applications informatiques pour les R&T</h3>
+                    J'ai acquis la compétence "Créer des outils et applications informatiques pour les R&T" 
+                    <br>
+                    grâce à mes multiples expériences liées à cette compétence. 
+                    <br><br>
+                    Par exemple, la programmation en Python ou en HTML m'a permis de renforcer des compétences telles que :
+                    <ul>
+                        <li>Connaître l’architecture et les technologies d’un site Web</li>
+                        <li>Traduire un algorithme dans un langage et pour un environnement donné</li>
+                        <li>Lire, exécuter, corriger et modifier un programme</li>
+                    </ul>
+                    Par ailleurs, les cours de bases de systèmes d'exploitation ont renforcé des compétences comme :
+                    <ul>
+                        <li>Utiliser un système informatique et ses outils</li>
+                        <li>S’intégrer dans un environnement propice au développement et au travail collaboratif</li>
+                    </ul>
+                    Les SAÉ qui suivent illustreront ces propos avec des preuves concrètes.
+                </div>
+            
+                <!-- Deuxième paragraphe à droite et photo à gauche -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+                    <!-- Photo à gauche -->
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                        <img src="image_sae1.04.png" alt="Preuve SAE 1.04" style="width: 100%; border-radius: 10px; ">
+                    </div>
+                    <!-- Texte à droite -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px;  text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE 1.04 | Se présenter sur internet</h3>
+                        La SAE 1.04 avait pour objectif de réfléchir à notre identité numérique et sa trace sur internet, construire une page de descriptif personnel dans un cadre professionnel, et faire une page de présentation d'un centre d'intérêt avec un résumé en anglais.
+                        <br><br>
+                        Pour la page de présentation, voici mon lien GitHub de la page : <a href="https://github.com/Mewlink8/Page-web-SAE-1.14" target="_blank" style="color: #00ff00;"> <br> Page de présentation</a>.
+                        <br><br>
+                        Voici les preuves de cette SAE :
+                    </div>
+                </div>
+            
+                <!-- Troisième paragraphe à gauche et photo à droite -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE 1.05 | Traiter des données</h3>
+                        La SAE 1.05 avait pour objectif de mettre en pratique les différents cours de programmation.
+                        <br><br>
+                        Voici un résumé de la SAE :
+                        <br><br>
+                        Créer un programme de tirage du loto qui génère des séquences de cinq boules, dont les valeurs se situent entre 1 et 45. Les séquences doivent être générées à l'aide d'un générateur aléatoire uniforme sans remise. La graine aléatoire sera préalablement définie dans le code afin de garantir l'obtention des mêmes séquences indépendamment de l'ordinateur utilisé.
+                        <br><br>
+                        Voici des photos de codes pour prouver que j'ai bien effectué la SAE :
+                    </div>
+                    <!-- Photo à droite -->
+                    <div style="flex: 1; display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 20px auto; gap: 20px;">
+                        <img src="image_sae1.05.png" alt="Preuve SAE 1.05" style="width: 100%; border-radius: 10px; ">
+                        <img src="histogramme_sae1.05.png" alt="Preuve 2 SAE 1.05" style="width: 80%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>            
+        </div>
+        <!-- BUT R&T 1ère année -->
+        <!-- BUT R&T 2ère année -->
+        <div id="comp6" class="competence-content hidden">
+            
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+                <h3 style="text-align: center; font-size: 20px; margin-bottom: 10px;">Administrer les réseaux et l'Internet</h3>
+                <p>
+                J'ai acquis la compétence <em>"Administrer les réseaux et l’Internet"</em> grâce à diverses expériences académiques et pratiques, renforcées par des projets concrets. Par exemple, la programmation en Python et les cours spécialisés m'ont permis de développer et maîtriser des compétences clés telles que :
+            </p>
+            <ul>
+                <li>
+                    Configurer et dépanner le routage dynamique dans un réseau (<strong>AC21.01</strong>), en mettant en œuvre des protocoles comme OSPF et EIGRP pour garantir une connectivité optimale.
+                </li>
+                <li>
+                    Configurer et expliquer une politique simple de QoS ainsi que les fonctions de base pour sécuriser un réseau (<strong>AC21.02</strong>), notamment pour assurer la priorité du trafic critique et protéger les systèmes contre les intrusions.
+                </li>
+                <li>
+                    Déployer des postes clients et des solutions virtualisées adaptées à une situation donnée (<strong>AC21.03</strong>), en utilisant des outils tels que VMware et VirtualBox pour simuler des environnements réseau.
+                </li>
+                <li>
+                    Déployer des services réseaux avancés (<strong>AC21.04</strong>), comme des serveurs DHCP, DNS et des services de routage, pour répondre à des besoins spécifiques.
+                </li>
+                <li>
+                    Identifier les réseaux opérateurs et comprendre l’architecture d’Internet (<strong>AC21.05</strong>), en analysant les protocoles MPLS et BGP, essentiels pour les réseaux opérateurs.
+                </li>
+                <li>
+                    Travailler en équipe pour développer des compétences professionnelles (<strong>AC21.06</strong>), à travers des projets collaboratifs visant à résoudre des problématiques complexes.
+                </li>
+            </ul>
+            </div>
+        
+
+            <!-- Deuxième section : Texte à droite et photo à gauche -->
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 20px auto; gap: 20px;">
+                <!-- Photo à gauche -->
+                <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; flex-direction: column; padding-left: 80px; ">
+                    <img src="image_strasbourg.png" alt="Base de données SAE 3.02" style="width: 100%; border-radius: 10px; ">
+                    <br>
+                    <img src="image_internet.png" alt="Base de données SAE 3.02" style="width: 100%; border-radius: 10px; ">
+                </div>
+                <!-- Texte à droite -->
+                <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6; padding-left: 80px;">
+                    <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">Concevoir un réseau informatique sécurisé multisites</h3>
+                    <p>
+                        Dans la SAÉ intitulée <em>"Concevoir un réseau multisites"</em>, 
+                        <br>
+                        j'ai appliqué ces compétences pour résoudre une problématique concrète. 
+                        <br>
+                        L’objectif était de concevoir un réseau interconnecté entre deux sites géographiques : 
+                        <br>
+                        Strasbourg et Metz, en intégrant les éléments suivants :
+                    </p>
+                    <ul>
+                        <li>Fournisseurs d'accès à Internet (FAI) pour assurer la connectivité.</li>
+                        <li>Réseaux locaux (LAN) pour chaque site, incluant la segmentation en VLAN.</li>
+                        <li>Services réseaux avancés, comme le DHCP, DNS et le NAT, pour garantir un fonctionnement optimal.</li>
+                    </ul>
+                    <h4 style="font-size: 18px; margin-bottom: 10px;">Méthodologie :</h4>
+                    <ul>
+                        <li>Utilisation de <strong>Windows Server</strong> pour configurer les services critiques.</li>
+                        <li>Mise en œuvre de <strong>routeurs et switchs</strong> pour établir le routage dynamique (<strong>AC21.01</strong>)
+                            <br>
+                             et la segmentation des réseaux.</li>
+                        <li>Simulation d’une interconnexion intersites via un <strong>cloud</strong> et des FAI.</li>
+                        <li>Mise en œuvre d’une politique QoS pour prioriser certains types de trafic réseau (<strong>AC21.02</strong>).</li>
+                    </ul>
+                    <h4 style="font-size: 18px; margin-bottom: 10px;">Résultats et preuves :</h4>
+                    <p>
+                        Le projet a été mené à bien avec succès, validant ma capacité à :
+                    </p>
+                    <ul>
+                        <li>Déployer un réseau multisite opérationnel.</li>
+                        <li>Identifier les problématiques liées aux réseaux opérateurs (<strong>AC21.05</strong>).</li>
+                        <li>Collaborer efficacement en équipe pour surmonter les défis techniques (<strong>AC21.06</strong>).</li>
+                    </ul>
+                    <p>
+                        Des photos du réseau multisites réalisé sont disponibles pour attester de la mise en œuvre de cette SAÉ.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div id="comp7" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Section 1 : Introduction des compétences -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Connecter les entreprises et les usagers</h3>
+                    <p>
+                        J’ai acquis la compétence <strong>"Connecter les entreprises et les usagers"</strong> grâce à diverses expériences et apprentissages. Ces compétences se déclinent de la manière suivante :
+                    </p>
+                    <ul>
+                        <li><strong>AC22.04 | Déployer des réseaux d’accès des opérateurs :</strong> 
+                            Maîtrise du réseau cuivre (ADSL, VDSL) et de la fibre optique, ainsi que des diagnostics et résolutions de problèmes liés aux liens optiques.
+                        </li>
+                        <li><strong>AC22.01 | Déployer et caractériser des systèmes de transmissions complexes :</strong> 
+                            Étude des modulations de signaux (BPSK, QAM) et utilisation d’outils comme MATLAB pour créer et analyser divers signaux.
+                        </li>
+                        <li><strong>AC22.02 | Mettre en place un accès distant sécurisé :</strong> 
+                            Configuration de VPN et sécurisation des connexions distantes dans plusieurs cas pratiques.
+                        </li>
+                        <li><strong>AC22.03 | Mettre en place une connexion multi-site via un réseau opérateur :</strong> 
+                            Exploration et configuration de protocoles (MPLS, BGP, eBGP, iBGP) pour connecter plusieurs sites.
+                        </li>
+                        <li><strong>AC22.05 | Capacité à questionner un cahier des charges RT :</strong> 
+                            Analyse et interprétation de cahiers des charges pour répondre efficacement aux besoins en réseaux et télécommunications.
+                        </li>
+                    </ul>
+                    <p>
+                        Les SAÉ suivantes illustrent et confirment ces compétences.
+                    </p>
+                </div>
+            
+                <!-- Section 2 : SAÉ avec texte et schéma -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 20px auto; gap: 20px;">
+            
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAÉ : Mettre en œuvre un système de transmission</h3>
+                        <p>
+                            Dans le cadre de cette SAÉ, j’ai contribué à la conception et au développement d’une prise Wi-Fi fonctionnelle. Ce projet comprenait :
+                        </p>
+                        <ul>
+                            <li>Utilisation de deux cartes ESP8266 pour piloter plusieurs lampes.</li>
+                            <li>Déploiement d’un <strong>Raspberry Pi</strong> pour héberger un site Web permettant le contrôle des lampes via deux interfaces :</li>
+                            <ul>
+                                <li>Un site Web développé selon notre choix technologique.</li>
+                                <li>Une application Android simplifiée, développée avec une plateforme de type Scratch pour accélérer le développement.</li>
+                            </ul>
+                        </ul>
+                        <p>
+                            Le projet, réalisé en groupe de quatre personnes, a été évalué par notre enseignant sur plusieurs critères, incluant une présentation PowerPoint et la fonctionnalité du système.
+                        </p>
+                    </div>
+            
+                    <!-- Image ou schéma à droite -->
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center; padding-top:100px; flex-direction: column; ">
+                        <img src="image_systeme_transmission.jpg" alt="Système de Transmission" 
+                             style="width: 100%; border-radius: 10px;">
+                        <ul>
+                            <li><a href="https://github.com/Mewlink8/R301" target="_blank" style="color: #007bff; text-decoration: none;">Dépôt GitHub</a> : Regroupe les codes sources et configurations du projet.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; margin: 20px auto; gap: 20px;">
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center;  flex-direction: row; ">
+                        <img src="application_telephone.jpg" alt="Système de Transmission" style="width: 30%; border-radius: 10px; padding-right: 50px;">
+                        <br>
+
+                        <figure style="width: 100%; text-align: center;">
+                            <img src="application_web.png" alt="Système de Transmission" style="width: 100%; border-radius: 10px;">
+                            <figcaption>Voici un screen du site avec différents modes : "normal", "noël" et "nuit".</figcaption>
+                        </figure>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="comp8" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Premier paragraphe centré -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Créer des outils et applications informatiques pour les R&T</h3>
+                    J'ai acquis la compétence "Créer des outils et applications informatiques pour les R&T" grâce à mes multiples expériences liées à cette compétence.
+                    <br><br>
+                    Par exemple, la programmation en Python ou en HTML m'a permis de renforcer les compétences suivantes :
+                    <ul>
+                        <li>AC13.01 | Utiliser un système informatique et ses outils</li>
+                        <li>AC13.02 | Lire, exécuter, corriger et modifier un programme</li>
+                        <li>AC13.03 | Traduire un algorithme, dans un langage et pour un environnement donné</li>
+                        <li>AC13.04 | Connaître l’architecture et les technologies d’un site Web</li>
+                        <li>AC13.05 | Choisir les mécanismes de gestion de données adaptés au développement de l’outil et argumenter ses choix</li>
+                        <li>AC13.06 | S’intégrer dans un environnement propice au développement et au travail collaboratif</li>
+                    </ul>
+                    La SAÉ qui va suivre va illustrer ces propos avec des preuves concrètes.
+                </div>
+            
+                <!-- Deuxième section : Texte à droite et photo à gauche -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+                    <!-- Photo à gauche -->
+                    <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; padding-top: 150px;">
+                        <img src="image_sae3.02_database.png" alt="Base de données SAE 3.02" style="width: 150%; border-radius: 10px; ">
+                    </div>
+                    <!-- Texte à droite -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE 3.02 | Développer des applications communicantes</h3>
+                        L’objectif de cette SAÉ était de concevoir une application de messagerie interne pour une entreprise, s’inspirant d’outils comme Discord.
+                        <br><br>
+                        <strong>Résumé des réalisations :</strong>
+                        <ul>
+                            <li><strong>Base de données :</strong> Conception et structuration des tables principales : channels, messages, user_channels, et users, assurant une gestion optimale des données.</li>
+                            <li><strong>Serveur :</strong> Développement d’un serveur centralisé pour gérer les échanges entre clients, en utilisant des sockets Python pour une architecture robuste.</li>
+                            <li><strong>Client :</strong> Interface utilisateur intuitive conçue avec PyQt, incluant une fenêtre de connexion et une interface principale avec gestion dynamique des canaux.</li>
+                        </ul>
+                        Cette SAÉ m’a permis de renforcer mes compétences en développement backend, en conception d’interfaces graphiques, et en modélisation de bases de données.
+                    </div>
+                </div>
+            
+                <!-- Troisième section : Texte à gauche et photo à droite -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px;  border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">Conception d'une application de messagerie</h3>
+                        <strong>Client :</strong>
+                        <br> Une interface utilisateur intuitive a été conçue avec PyQt, incluant :
+                        <ul>
+                            <li>Une fenêtre de connexion pour authentifier les utilisateurs.</li>
+                            <li>Une fenêtre principale où les utilisateurs connectés peuvent accéder aux fonctionnalités de l’application.</li>
+                        </ul>
+                        L’accès aux différents canaux est géré dynamiquement grâce à la base de données, en fonction des droits et rôles de chaque utilisateur.
+                    </div>
+                    <!-- Photo à droite -->
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                        <img src="image_sae3.02_client.png" alt="Interface utilisateur SAE 3.02" style="width: 100%; border-radius: 10px; ">
+                    </div>
+                </div>
+            
+            </div>
+            
+        </div>
+        <div id="comp9" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Section 1 : Introduction des compétences -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Administer un système d'information sécurisé</h3>
+                    J’ai développé la compétence "Administer un système d'information sécurisé" grâce à diverses expériences professionnelles et académiques :
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>AC24.01Cyber | Connaître et utiliser les bonnes pratiques et recommandations de cybersécurité</li>
+                        <li>AC24.02Cyber | Mettre en œuvre les outils fondamentaux de sécurisation d’une infrastructure réseau</li>
+                        <li>AC24.03Cyber | Sécuriser les services</li>
+                        <li>AC24.04Cyber | Choisir les outils cryptographiques adaptés au besoin fonctionnel</li>
+                        <li>AC24.05Cyber | Connaître les différents types d’attaques</li>
+                        <li>AC24.06Cyber | Comprendre des documents techniques en anglais</li>
+                    </ul>
+                    <p style="margin-top: 15px;">La SAÉ qui va suivre va illustrer ces compétences par des preuves concrètes.</p>
+                </div>
+            
+                <!-- Section 2 : SAÉ avec texte et schéma -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE4.Cyber.01 | Sécuriser un système d’information</h3>
+                        La SAÉ 4.01 était centrée sur la sécurisation d’un réseau d’entreprise en intégrant des solutions telles que :
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Active Directory</li>
+                            <li>Pare-feu</li>
+                            <li>Serveurs internes (fichiers, mail, etc.)</li>
+                            <li>VPN</li>
+                        </ul>
+                        <p style="margin-top: 15px;">
+                            Le projet consistait à concevoir une architecture réseau complète et à appliquer des mesures de sécurité pour garantir sa robustesse. 
+                            Bien que le travail ait été effectué sur des machines virtuelles, un schéma détaillé illustre la conception réalisée.
+                        </p>
+                    </div>
+            
+                    <!-- Image ou schéma à droite -->
+                    <div style="flex: 2; display: flex; justify-content: center; align-items: center; padding-top:100px; ">
+                        <img src="schema_architecture_sae4.01.png" alt="Schéma d'architecture réseau SAE 4.01" 
+                             style="width: 100%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="comp10" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Section 1 : Introduction des compétences -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Surveiller un système d'information sécurisé</h3>
+                    J’ai développé la compétence "Surveiller un système d’information sécurisé" grâce à des expériences académiques :
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>AC25.01Cyber | Administrer les protections contre les logiciels malveillants</li>
+                        <li>AC25.02Cyber | Prendre en main des outils de test de pénétration réseau/système</li>
+                    </ul>
+                    <p style="margin-top: 15px;">La SAÉ qui suit mettra en évidence mes compétences par des exemples concrets.</p>
+                </div>
+            
+                <!-- Section 2 : SAÉ avec texte et image -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE3.Cyber.04 | Découvrir le pentesting</h3>
+                        La SAÉ 3.04 portait sur l’apprentissage du pentesting à travers des défis pratiques sur la plateforme Root-Me :
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Exploitation de failles web</li>
+                            <li>Cryptographie</li>
+                            <li>Analyse réseau</li>
+                        </ul>
+                        <p style="margin-top: 15px;">
+                            Cette initiation a permis une exploration progressive des outils et techniques de sécurité offensive.
+                            <br>
+                            Vous pouvez voir sur l'image le nom du challenge, combien de personne l'on validé, le nombre de point qu'il rapporte et sa difficulté.
+                        </p>
+                    </div>
+                    <!-- Image à droite -->
+                    <div style="flex: 2; display: flex; justify-content: center; align-items: center;">
+                        <img src="image_root_me_challenges.png" alt="Challenges Root-Me SAE 3.04" 
+                             style="width: 100%; border-radius: 10px; ">
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+        <div id="comp16" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Section 1 : Introduction des compétences -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Stage</h3>
+                    J’ai développé la compétence "Surveiller un système d’information sécurisé" grâce à des expériences académiques :
+
+                    <p style="margin-top: 15px;">La SAÉ qui suit mettra en évidence mes compétences par des exemples concrets.</p>
+                </div>
+            
+                <!-- Section 2 : SAÉ avec texte et image -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">Poster</h3>
+                        <h4>Contexte du stage</h4>
+                        Dans le cadre de ma deuxième année de BUT Réseaux & Télécommunications. 
+                        <br>
+                        J’ai effectué un stage chez V33, une entreprise  œuvrant dans la fabrication de produits de revêtement.
+                        <br>
+                        J’ai été intégré à l’équipe d’administration des systèmes et des réseaux.
+
+                        <h4>Objectif principal</h4>
+                        La mission majeure de ce stage a été la migration des équipements de production vers un nouveau réseau, 
+                        <br>
+                        avec pour enjeu principal l’intégration d’un pare-feu afin de garantir une sécurité réseau optimale. 
+                        <br>
+                        Ce projet avait une portée locale mais s’inscrivait dans une démarche globale d’évolution de l’infrastructure de l’entreprise.
+                        <br>
+                        <h4>Missions réalisées</h4>
+                        Scriptings divers pour automatiser certaines tâches.
+                        <br>
+                        Support utilisateur (help-desk).
+                        <br>
+                        Migration des postes utilisateurs et des imprimantes vers de nouveaux VLANs.
+                        <br>
+                        Création d’un lien trunk entre l’ancien et le nouveau switch de production.
+                        <br>
+                        Basculement des équipements vers le nouveau réseau.
+                        <br>
+                        Intégration du pare-feu dans le LAN de production.
+                        <br>
+                        Participation à la restructuration du réseau de plusieurs bâtiments.
+                        <br>
+                        <h4>Compétences développées</h4>
+                        Techniques : installation et configuration de switches, mise en place de VLANs, utilisation de pare-feu.
+                        <br>
+                        Transversales : travail en équipe, communication, rigueur dans l’exécution des tâches.
+                        <br>
+                        Outils utilisés : scripting, outils de supervision, équipements réseau.
+
+                         <h4>Résultats obtenus </h4>
+                        Cette migration a permis de renforcer la sécurité du réseau de production tout en assurant une communication fluide entre les différents équipements. 
+                        <br>
+                        Ce projet m’a permis de consolider mes compétences techniques et de mieux comprendre les enjeux de l’administration réseau en environnement industriel.
+                            
+                        <p style="margin-top: 15px;">
+                            Cette initiation a permis une exploration progressive des outils et techniques de sécurité offensive.
+                            <br>
+                            Vous pouvez voir sur l'image le nom du challenge, combien de personne l'on validé, le nombre de point qu'il rapporte et sa difficulté.
+                        </p>
+                    </div>
+                    <!-- Image à droite -->
+                    <div style="flex: 2; display: flex; justify-content: center; align-items: center;">
+                        <img src="test Idée poster (2)_page-0001.jpg" alt="Challenges Root-Me SAE 3.04" 
+                             style="width: 100%; border-radius: 10px; ">
+                    </div>
+                </div>
+            
+            </div>
+        </div>            
+        <!-- BUT R&T 2ère année -->
+        <!-- BUT R&T 3ère année -->
+        <div id="comp11" class="competence-content hidden">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Surveiller un système d'information sécurisé</h3>
+                J’ai développé la compétence "Administrer les réseaux et l’Internet" grâce à de nombreuses expériences. 
+                Ces expériences m’ont permis d’acquérir et de renforcer des aptitudes essentielles, telles que :
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li>AC31.01 | Concevoir un projet de réseau informatique d’une entreprise en intégrant les problématiques de haute disponibilité, de QoS, de sécurité et de supervision </li>
+                    <li>AC31.02 | Réaliser la documentation technique de ce projet </li>
+                    <li>AC31.03 | Réaliser une maquette de démonstration du projet</li>
+                    <li>AC31.04 | Défendre/argumenter un projet</li>
+                    <li>AC31.05 | Communiquer avec les acteurs du projet </li>
+                    <li>AC31.06 | Gérer le projet et les différentes étapes de sa mise en œuvre en respectant les délais</li>
+                </ul>
+                <p style="margin-top: 15px;">La SAÉ qui suit mettra en évidence mes compétences par des exemples concrets.</p>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            
+                <!-- Texte à gauche -->
+                <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                    <h3 style="text-align: center; font-size: 20px; margin-bottom: 10px;">SAE 5.01 : Module GPS</h3>
+                    La SAÉ 5.01 portait sur la programmation d'un module GPS avec accéléromètre :
+                    
+                    <p style="margin-top: 15px;">
+                        Nous avons développé un système GPS intelligent, activé uniquement en présence de mouvement, afin de réaliser un suivi de trajectoire précis.
+                        <br> 
+                        Pour ce faire, nous avons utilisé une carte électronique connectée à un module LoRa One, lui-même relié à un serveur via le réseau 4G.
+                        <br>
+                        Le GPS s’activait automatiquement dès qu’un mouvement était détecté, puis se désactivait en l’absence d’activité. 
+                        <br>
+                        Cette gestion dynamique a permis de minimiser significativement la consommation énergétique de la carte, alimentée par batterie.
+
+                        <br>
+                        <br>
+                        Nous avons également conçu une interface permettant de visualiser en temps réel la position GPS de la carte, de vérifier si le module est actif ou non, et de contrôler manuellement son activation ou sa désactivation." 
+                        
+                    </p>
+                </div>
+                <!-- Image à droite -->
+                <div style="flex: 2; display: flex; justify-content: center; align-items: center;">
+                    <img src="Lora-one.png" alt="Nous avons également conçu une interface permettant de visualiser en temps réel la position GPS de la carte, de vérifier si le module est actif ou non, et de contrôler manuellement son activation ou sa désactivation." 
+                         style="width: 100%; border-radius: 10px; ">
+                         
+                </div>
+            </div>
+        </div>
+        <div id="comp12" class="competence-content hidden">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;"> Connecter les entrepirses et les usagers </h3>
+            <ul style="margin-top: 10 px; padding-left : 20 px;" >
+                <li>AC32.01 | Déployer un système de communication pour l’entreprise </li>
+                <li>AC32.02 | Déployer un réseau d’accès sans fil pour le réseau d’entreprise en intégrant les enjeux de la sécurité </li>
+                <li>AC32.03 | Déployer un réseau d’accès fixe ou mobile pour un opérateur de télécommunications en intégrant la sécurité </li>
+                <li>AC32.04 | Permettre aux collaborateurs de se connecter de manière sécurisée au système d’information de l’entreprise </li>
+                <li>AC32.05 | Collaborer en mode projet en français et en anglais </li>
+            </ul> 
+            <p>
+                SAE....................
+            </p>
+            </div>
+        </div>
+        <div id="comp13" class="competence-content hidden">
+            <div style="margin: 20px auto; max-width: 1200px;">
+
+                <!-- Section 1 : Introduction des compétences -->
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px;">
+                    <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Créer des outils et applications informatiques pour les R&T</h3>
+                    J'ai acquis la compétence "Créer des outils et applications informatiques pour les R&T" grâce à mes multiples expériences. 
+                    Par exemple, l'utilisation de Docker et la création d'API ont renforcé les compétences suivantes :
+                    <ul style="margin-top: 10px; padding-left: 20px;">
+                        <li>AC33.01 | Élaborer les spécifications techniques et le cahier des charges d’une application informatique</li>
+                        <li>AC33.02 | Mettre en place un environnement de travail collaboratif</li>
+                        <li>AC33.03 | Participer à la formation des utilisateurs</li>
+                        <li>AC33.04 | Déployer et maintenir une solution informatique</li>
+                        <li>AC33.05 | S’informer sur les évolutions et les nouveautés technologiques</li>
+                        <li>AC33.06 | Sécuriser l'environnement numérique d'une application</li>
+                    </ul>
+                    <p style="margin-top: 15px;">La SAÉ qui suit illustre et met en pratique ces compétences par des réalisations concrètes.</p>
+                </div>
+            
+                <!-- Section 2 : SAÉ avec texte et image -->
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            
+                    <!-- Texte à gauche -->
+                    <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                        <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE5.02 | Pilotage d’un projet informatique</h3>
+                        L’objectif de cette SAÉ était de concevoir une application de gestion de to-do list en collaboration avec une équipe de 8 personnes, nécessitant une gestion efficace du projet.
+                        <p><strong>Résumé des réalisations :</strong></p>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>
+                                <strong>Base de données :</strong> L'application était une application lourde, pas une page web, donc on a mis en place 2 base de données. 
+                                                                    Une base en local et une base en ligne pour la syncronisation entre les clients.
+                            </li>
+                            <br>
+                            <li>
+                                <strong>API :</strong> Une API a été développée pour gérer les échanges entre les clients et le serveur. On a également mis en place un bastion pour plus de sécurité.
+                            </li>
+                            <br>
+                            <li>
+                                <strong>Client :</strong> Une interface utilisateur intuitive a été conçue avec PyQt. Docker a été utilisé pour centraliser les composants nécessaires, simplifiant le déploiement et la gestion de l’application.
+                            </li>
+                        </ul>
+                    </div>
+            
+                    <!-- Image à droite -->
+                    <div style="flex: 1; display: flex; justify-content: row; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
+                        <img src="todoux.png" alt="Image application gestion to-do list SAE 5.02" style="width: 100%; border-radius: 10px;">
+                        <br>
+                        <img src="todouxlist.png" alt="Image application gestion to-do list SAE 5.02" style="width: 100%; border-radius: 10px;">
+                    </div>                  
+                </div>
+            </div>            
+        </div>
+
+        <div id="comp14" class="competence-content hidden">
+            
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Administer un système d'information sécurisé</h3>
+                J'ai acquis la compétence "Administer un système d'information sécurisé" au travers de diverses expériences.
+                <br><br>
+                Par exemple, la programmation en Python ou en HTML m'a permis de renforcer les compétences suivantes :
+                <ul>
+                    <li>AC34.01Cyber | Participer activement à une analyse de risque pour définir une politique de sécurité pour une petite structure</li>
+                    <li>AC34.02Cyber | Mettre en œuvre des outils avancés de sécurisation d’une infrastructure du réseau</li>
+                    <li>AC34.03Cyber | Sécuriser les systèmes d’exploitation </li>
+                    <li>AC34.04Cyber | Proposer une architecture sécurisée de système d'information pour une petite structure </li>
+                </ul>
+                La SAÉ qui va suivre, va pouvoir affirmer mes propos et l'illustrer avec mes preuves.
+            </div>
+
+           <!-- Deuxième section : Texte à droite et photo à gauche -->
+           <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; margin: 20px auto; gap: 20px;">
+            <!-- Photo à gauche -->
+            <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; padding-top: 150px;">
+                <img src="hydra.png" alt="Base de données SAE 3.02" style="width: 100%; border-radius: 10px; ">
+            </div>
+            <!-- Texte à droite -->
+            <div style="flex: 2; padding: 20px; font-size: 16px; border-radius: 10px; text-align: justify; line-height: 1.6;">
+                <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE6.Cyber.01 : Réagir face à une cyber-attaque</h3>
+                L’objectif de cette SAÉ était d'attaquer un réseau d'entreprise interne, 
+                <br>
+                puis ensuite de sécuriser le réseau avec un SIEM comme wazuh. 
+                <br>
+                Pour cet UE nous allons nous concentré sur sécuriser le réseau.
+                <br><br>
+                <p>
+                    Le but du projet concernait la Blue Team, avec pour objectif de défendre l’infrastructure. 
+                    <br>
+                    Pour cela, nous avons déployé le SIEM Wazuh.
+                    <br>
+                    Un SIEM (Security Information and Event Management) est une solution centralisant les logs 
+                    <br>
+                    des machines du réseau et assurant la détection d’activités suspectes grâce à des règles de corrélation.
+                    <br>
+                    Nous avons intégré l’ensemble des machines à la solution Wazuh, 
+                    <br>
+                    puis configuré les détections nécessaires pour identifier les attaques précédemment réalisées. 
+                    <br>
+                    Enfin, nous avons mis en place des contre-mesures, 
+                    <br>
+                    afin de corriger les failles exploitées et d’empêcher leur réutilisation.
+
+                </p>
+            </div>
+        </div>
+        </div>
+        <div id="comp15" class="competence-content hidden">
+            <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Surveiller un système d'information sécurisé </h3>
+            <p>
+                J’ai développé la compétence "Surveiller un système d’information sécurisé" au travers de diverses expériences.
+                <br>
+                <ul>
+                    <li>AC35.01Cyber | Surveiller l’activité du système d’information </li>
+                    <li>AC35.02Cyber | Appliquer une méthodologie de tests de pénétration </li>
+                    <li>AC35.03Cyber | Réagir face à un incident de sécurité </li>
+                    <li>AC35.04Cyber | Administrer les outils de surveillance du système d’information </li>
+                </ul>
+                La SAÉ qui va suivre, va pouvoir affirmer mes propos et l'illustrer avec mes preuves.
+            </p>
+            <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE Cyber | Attaques réseau</h3>
+            <p>
+                La SAE ... avait avait pour objectif de nous placer dans la peau d’un attaquant de type Red Team, en simulant une attaque complète sur une infrastructure informatique.
+                <br><br>
+                Nous avons commencé par une phase d’OSINT (Open Source Intelligence) pour collecter des informations disponibles publiquement sur la cible. 
+                Cette phase a été suivie d’un scan de ports, afin d’identifier les services ouverts et accessibles sur le réseau.
+                <br><br>
+                Nous avons ensuite réalisé du fuzzing, une technique qui consiste à tester automatiquement un grand nombre d’URL ou de paramètres afin de découvrir des pages web cachées (comme /developers), 
+                souvent non référencées mais potentiellement vulnérables.
+                <br><br>
+                Une fois ces pages identifiées, nous avons lancé des attaques par brute force, visant à deviner les identifiants d’accès en testant un grand nombre de combinaisons.
+                <br><br>
+                Lorsque l’accès fut obtenu, nous sommes passés à la phase d’exploitation, incluant notamment l’usage de la faille Log4Shell : 
+                <br><br>
+                une vulnérabilité critique affectant la bibliothèque de journalisation Java Log4j, 
+                <br>
+                permettant à un attaquant d’exécuter du code à distance simplement en envoyant une chaîne spécialement formatée.
+                <br><br>
+                Nous avons ensuite appliqué des techniques d’escalade de privilèges,
+                <br>
+                 permettant de passer d’un utilisateur standard à un utilisateur administrateur, 
+                 puis réalisé une évasion de conteneur via une Docker escape, dans le but de sortir de l’environnement isolé d’un conteneur et d’accéder à l’hôte.
+                 <br><br>
+                Enfin, nous avons mis en place des mécanismes de persistance, 
+                <br>
+                permettant à l’attaquant de conserver un accès durable à l’infrastructure même après un redémarrage ou une tentative de nettoyage.
+                <br><br><br><br>
+                L'image de gauche est un scan de port, nous pouvons voir que le port 80 donc http est ouvert, c'est ici qu'il y aura une faille.
+                <br><br>
+                L'image de droite est un bruteforce pour trouver l'identifiant et le mot de passe du compte en http.
+            </p>
+
+            
+        </div>
+                    <!-- Image à droite -->
+                    <div style="flex: 1; display: flex; justify-content: center; align-items: center;">
+                        <img src="scan.png" alt="Image application gestion to-do list SAE 5.02" style="width: 100%; border-radius: 10px;">
+                        <img src="bruteforce.png" alt="Image application gestion to-do list SAE 5.02" style="width: 100%; border-radius: 10px;">
+                    </div>
+
+        </div>
+        <!-- BUT R&T 3ère année -->
+        <!-- master 1ère année -->
+        <!-- master 1ère année -->
+        <!-- master 2ère année -->
+        <!-- master 2ère année -->
+<!--
+    <div id="projet_personnel" class="content hidden">
+        <h2>Projet Personnel</h2>
+        <p style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+            Plongez dans mes projets personnels, où je mets à profit ma créativité et mes compétences techniques pour explorer de nouvelles idées et résoudre des problématiques. 
+            Ces réalisations reflètent ma passion pour les réseaux, les télécommunications, et l'électronique.
+        </p>
+        <div class="sub-menu">
+            <button onclick="showCompetenceContent('perso1')">Projet Réseau</button>
+            <button onclick="showCompetenceContent('perso2')">Projet électronique</button>
+        </div>
+        <div id="perso1" class="competence-content hidden">
+             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Projet NAS</h3>
+                Mon projet réseau est un projet de serveur NAS. 
+                <br>
+                Mais c'est quoi un serveur NAS ? 
+                <br>
+                Un NAS est périphérique de stockage connecté à un réseau qui permet à plusieurs utilisateurs ou appareils d'accéder à des données centralisées.
+                <br>
+                Pourquoi avoir fait un serveur NAS alors qu'il en existe sur internet ?
+                <br>
+                J'ai voulu faire un serveur NAS pour mettre en pratique mes compétences apprisent en cours et pour en apprendre de nouvelles.
+              </div>
+        </div>
+        <div id="perso2" class="competence-content hidden">
+            <h3>Projet Serre de jardin automatique</h3>
+            <p> Mon projet élctronique est un projet de serre de jardin automatique</p>
+        </div>
+     </div>
+    -->
+
+    
+    <div id="CV" class="content hidden">
+        <h2>CVs</h2>
+        <p style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
+            Voici mes CV en Français et en Anglais, ainsi que mon SWOT.
+        </p>
+        <div class="sub-menu">
+            <button onclick="showCompetenceContent('perso1')">CV Français</button>
+            <button onclick="showCompetenceContent('perso2')">CV Anglais</button>
+            <button onclick="showCompetenceContent('perso3')">SWOT</button>
+        </div>
+        <div id="perso1" class="competence-content hidden">
+             <h3>CV Français</h3>
+            <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; padding-top: 150px;">
+                <img src="BIANCHI_Mathieu_CV_Alternance.png" alt="Base de données SAE 3.02" style="width: 100%; border-radius: 10px; ">
+            </div>
+              </div>
+        </div>
+        <div id="perso2" class="competence-content hidden">
+            <h3>CV Anglais</h3>
+            <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; padding-top: 150px;">
+                <img src="Copie de BIANCHI_Mathieu_CV_Alternance.png" alt="Base de données SAE 3.02" style="width: 100%; border-radius: 10px; ">
+            </div>
+        </div>
+        <div id="perso3" class="competence-content hidden">
+            <h3>SWOT</h3>
+            <div style="flex: 1; display: flex; justify-content: flex-end; align-items: center; padding-top: 150px;">
+                <img src="Graphique Analyse SWOT Minimaliste Moderne Coloré.png" alt="" style="width: 100%; border-radius: 10px; ">
+            </div>
+            <p><p>Graphique analyse SWOT de mon stage de 2ème année</p></p>
+        </div>
+     </div>
+   
+    
+    <script>
+        function showContent(sectionId) {
+            // Cache toutes les sections principales
+            const sections = document.querySelectorAll('.content');
+            sections.forEach(section => {
+                section.classList.add('hidden');
+                section.classList.remove('visible');
+            });
+
+            // Affiche la section sélectionnée
+            const activeSection = document.getElementById(sectionId);
+            if (activeSection) {
+                activeSection.classList.remove('hidden');
+                activeSection.classList.add('visible');
+            }
+
+            // Réinitialise tous les sous-contenus et compétences visibles
+            const subContents = document.querySelectorAll('.sub-content, .competence-content');
+            subContents.forEach(subContent => {
+                subContent.classList.add('hidden');
+            });
+        }
+
+
+        
+        function showSubContent(subId) {
+            // Cache uniquement les sous-contenus liés aux compétences (pas le menu des années)
+            const allSubContents = document.querySelectorAll('#but1, #but2, #but3');
+            allSubContents.forEach(subContent => subContent.classList.add('hidden'));
+
+            // Affiche le sous-contenu sélectionné
+            const activeSubContent = document.getElementById(subId);
+            if (activeSubContent) {
+                activeSubContent.classList.remove('hidden');
+            }
+        }
+
+        function showCompetenceContent(compId) {
+            // Cache uniquement les contenus des compétences
+            const allCompetenceContents = document.querySelectorAll('.competence-content');
+            allCompetenceContents.forEach(content => content.classList.add('hidden'));
+
+            // Affiche le contenu de la compétence sélectionnée
+            const activeCompetenceContent = document.getElementById(compId);
+            if (activeCompetenceContent) {
+                activeCompetenceContent.classList.remove('hidden');
+            }
+        }
+
+        function applyNeonEffect() {
+            const neonElements = document.querySelectorAll('h2, h3, h4, h5, h6');
+            const neonElements2 = document.querySelectorAll('h1')
+            neonElements.forEach(element => {
+                element.style.textShadow = `0 0 5px #c9d1d9, 0 0 10px #c9d1d9, 0 0 20px #c9d1d9, 0 0 30px #c9d1d9, 0 0 40px #c9d1d9, 0 0 50px #c9d1d9, 0 0 60px #c9d1d9`;
+            });
+            neonElements2.forEach(element => {
+                element.style.textShadow = `0 0 5px #58a6ff, 0 0 10px #58a6ff, 0 0 20px #58a6ff, 0 0 30px #58a6ff, 0 0 40px #58a6ff, 0 0 50px #58a6ff, 0 0 60px #58a6ff`;
+            });
+        }
+
+        function startNeonEffect() {
+            applyNeonEffect();
+                const activeDuration = Math.floor(Math.random() * 5000) + 1000; // 1 à 5 secondes
+                const inactiveDuration = Math.floor(Math.random() * 5000) + 3000; // 3 à 7 secondes
+
+                setTimeout(() => {
+                    document.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach(element => {
+                    element.style.textShadow = 'none';
+                    });
+                setTimeout(startNeonEffect, inactiveDuration);
+            }, activeDuration);
+        }
+
+    startNeonEffect();
+
+    </script>
+</body>
+</html>
