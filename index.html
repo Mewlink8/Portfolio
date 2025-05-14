@@ -814,7 +814,7 @@
         <!-- BUT R&T 3ère année -->
         <div id="comp11" class="competence-content hidden">
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
-                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Surveiller un système d'information sécurisé</h3>
+                <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Administrer les réseaux et l’Internet</h3>
                 J’ai développé la compétence "Administrer les réseaux et l’Internet" grâce à de nombreuses expériences. 
                 Ces expériences m’ont permis d’acquérir et de renforcer des aptitudes essentielles, telles que :
                 <ul style="margin-top: 10px; padding-left: 20px;">
@@ -860,6 +860,8 @@
         <div id="comp12" class="competence-content hidden">
             <div style="display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: justify; line-height: 1.6; padding: 20px; margin: 20px auto; max-width: 800px; font-size: 16px; border-radius: 10px; ">
                 <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;"> Connecter les entrepirses et les usagers </h3>
+                J'ai acquis la compétence "Connecter les entreprises et les usagers" grâce à mes multiples expériences. 
+                Par exemple, l'utilisation de firewall et la création de VPN ont renforcé les compétences suivantes :
             <ul style="margin-top: 10 px; padding-left : 20 px;" >
                 <li>AC32.01 | Déployer un système de communication pour l’entreprise </li>
                 <li>AC32.02 | Déployer un réseau d’accès sans fil pour le réseau d’entreprise en intégrant les enjeux de la sécurité </li>
@@ -867,9 +869,50 @@
                 <li>AC32.04 | Permettre aux collaborateurs de se connecter de manière sécurisée au système d’information de l’entreprise </li>
                 <li>AC32.05 | Collaborer en mode projet en français et en anglais </li>
             </ul> 
+            <h3 style="text-align: left; font-size: 20px; margin-bottom: 10px;">SAE Stormshield</h3>
             <p>
-                SAE....................
+                Le projet de SAE intitulé Stormshield avait pour objectif principal la mise en place d’une infrastructure réseau sécurisée.
+                <br>
+                L’idée directrice consistait, dans un premier temps, à déployer un pare-feu Stormshield afin d’assurer la sécurité du réseau interne.
+                <br>
+                Ce pare-feu devait être correctement installé et configuré pour contrôler les flux entrants et sortants, garantir la protection des données.
+                <br><br>
+                Dans un second temps, le projet prévoyait la mise en place d’un VPN, permettant aux utilisateurs distants de se connecter de manière sécurisée au réseau de l’entreprise.
+                <br>
+                Ce tunnel chiffré visait à assurer la confidentialité et l’intégrité des échanges de données, en particulier pour les collaborateurs en télétravail.
+                <br><br>
+                Enfin, l’infrastructure devait être complétée par l’installation de services essentiels,
+                <br>
+                notamment un serveur de messagerie pour la gestion des courriels professionnels,
+                <br>
+                ainsi qu’un serveur de fichiers permettant le partage et la centralisation des documents entre les utilisateurs.
+                <br>
+                L’ensemble de ces éléments visait à constituer un environnement réseau complet, sécurisé, et fonctionnel,
+                <br>
+                tout en développant les compétences techniques liées à l’administration et à la sécurisation des systèmes d’information.
+                <br><br>
+
+                Afin de sécuriser et de contrôler les flux réseau, un ensemble de règles de filtrage a été mis en place sur le pare-feu. 
+                <br>
+                Ces règles ont pour objectif de restreindre les accès non autorisés tout en assurant la continuité des services essentiels à l’infrastructure. 
+                <br>
+                Elles permettent notamment de définir précisément les flux autorisés ou interdits en fonction des besoins fonctionnels. 
+                <br><br>
+                Voici les 5 regles de l'image : 
+                <br>
+                1.Une Règle d’accès à l’administration du FW
+                <br>
+                2.Une règle qui autorise le ping
+                <br>
+                3.Une règle pour la navigation Internet.
+                <br>
+                4.Une règle pour la résolution des noms DNS.
+                <br>
+                5.Une règle de blocage de tous les autres flux.
             </p>
+            <div style="flex: 1; display: flex; justify-content: row; align-items: flex-start; justify-content: space-between; flex-wrap: wrap;">
+                <img src="nat_rules.png" alt="Image application gestion to-do list SAE 5.02" style="width: 100%; border-radius: 10px;">
+            </div> 
             </div>
         </div>
         <div id="comp13" class="competence-content hidden">
@@ -931,7 +974,7 @@
                 <h3 style="text-align: center; font-size: 22px; margin-bottom: 15px;">Administer un système d'information sécurisé</h3>
                 J'ai acquis la compétence "Administer un système d'information sécurisé" au travers de diverses expériences.
                 <br><br>
-                Par exemple, la programmation en Python ou en HTML m'a permis de renforcer les compétences suivantes :
+                Par exemple, la défense de réseau interne m'a permis de renforcer les compétences suivantes :
                 <ul>
                     <li>AC34.01Cyber | Participer activement à une analyse de risque pour définir une politique de sécurité pour une petite structure</li>
                     <li>AC34.02Cyber | Mettre en œuvre des outils avancés de sécurisation d’une infrastructure du réseau</li>
@@ -972,7 +1015,8 @@
                     Enfin, nous avons mis en place des contre-mesures, 
                     <br>
                     afin de corriger les failles exploitées et d’empêcher leur réutilisation.
-
+                    <br><br>
+                    L'image illustre une tentative d'attaque par force brute, détectée et enregistrée par Wazuh, puis bloquée avec succès.
                 </p>
             </div>
         </div>
