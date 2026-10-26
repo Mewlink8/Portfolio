@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - BIANCHI Mathieu</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
     <style>
         body {
             font-family: "Courier New", monospace;
@@ -111,6 +113,222 @@
             text-shadow: 0 0 5px #58a6ff, 0 0 10px #58a6ff, 0 0 20px #58a6ff, 0 0 30px #58a6ff, 0 0 40px #58a6ff, 0 0 50px #58a6ff, 0 0 60px #58a6ff;
             transition: text-shadow 0.5s ease-in-out;
         }
+
+        /* ----- Mon espace personnel ----- */
+        .espace-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 18px;
+            max-width: 1000px;
+            margin: 30px auto;
+        }
+
+        .espace-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 10px;
+            padding: 25px 20px;
+            cursor: pointer;
+            color: #c9d1d9;
+            font-family: inherit;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .espace-card:hover {
+            border-color: #66fcf1;
+            box-shadow: 0 0 10px #66fcf1, 0 0 30px rgba(102, 252, 241, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .espace-card .espace-icon {
+            font-size: 42px;
+        }
+
+        .espace-card .espace-title {
+            font-size: 20px;
+            color: #58a6ff;
+            margin: 10px 0 6px;
+            font-weight: bold;
+        }
+
+        .espace-card .espace-desc {
+            font-size: 14px;
+            color: #8b949e;
+        }
+
+        .espace-back {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .espace-back:hover {
+            background-color: #2ea043;
+            box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1;
+        }
+
+
+        .feed-list { display: flex; flex-direction: column; gap: 10px; }
+        .feed-item { display: flex; gap: 12px; align-items: flex-start; text-decoration: none; color: #c9d1d9; }
+        .feed-item img { width: 110px; height: 62px; object-fit: cover; border-radius: 6px; flex: 0 0 auto; }
+        .feed-item .feed-title { color: #58a6ff; font-weight: bold; }
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; margin-right: 6px; background: #21262d; color: #c9d1d9; }
+        .badge.ok { background: #238636; color: #fff; }
+        .badge.warn { background: #9e6a03; color: #fff; }
+        .badge.ko { background: #da3633; color: #fff; }
+        .game-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; }
+        .game-grid a { text-decoration: none; color: #c9d1d9; }
+        .game-grid img { width: 100%; border-radius: 6px; }
+        /* ----- Onglet Météo ----- */
+        .meteo-wrapper {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .meteo-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .meteo-actions button {
+            background-color: #238636;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+
+        .meteo-actions button:hover {
+            background-color: #2ea043;
+            box-shadow: 0 0 10px #66fcf1, 0 0 40px #66fcf1;
+        }
+
+        .meteo-actions input {
+            background-color: #161b22;
+            color: #c9d1d9;
+            border: 1px solid #30363d;
+            border-radius: 5px;
+            padding: 10px;
+            font-family: inherit;
+            min-width: 220px;
+        }
+
+        #meteo-map {
+            height: 380px;
+            border-radius: 10px;
+            border: 1px solid #21262d;
+            box-shadow: 0 0 15px rgba(102, 252, 241, 0.2);
+        }
+
+        #meteo-status {
+            margin: 15px 0;
+            color: #8b949e;
+            min-height: 1.4em;
+        }
+
+        #meteo-status.error {
+            color: #f85149;
+        }
+
+        .meteo-now {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin: 25px 0;
+            padding: 20px;
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 10px;
+        }
+
+        .meteo-now .icon {
+            font-size: 72px;
+            line-height: 1;
+        }
+
+        .meteo-now .temp {
+            font-size: 56px;
+            color: #58a6ff;
+            font-weight: bold;
+        }
+
+        .meteo-now .desc {
+            text-align: left;
+        }
+
+        .meteo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+            gap: 12px;
+        }
+
+        .meteo-card {
+            background-color: #161b22;
+            border: 1px solid #21262d;
+            border-radius: 8px;
+            padding: 14px;
+            transition: all 0.3s;
+        }
+
+        .meteo-card:hover {
+            border-color: #66fcf1;
+            box-shadow: 0 0 10px rgba(102, 252, 241, 0.4);
+        }
+
+        .meteo-card .label {
+            font-size: 13px;
+            color: #8b949e;
+        }
+
+        .meteo-card .value {
+            font-size: 20px;
+            color: #c9d1d9;
+            margin-top: 6px;
+        }
+
+        .meteo-scroll {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+        }
+
+        .meteo-scroll .meteo-card {
+            min-width: 95px;
+            flex: 0 0 auto;
+            text-align: center;
+        }
+
+        .meteo-days {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .meteo-days .meteo-card {
+            text-align: center;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .meteo-small {
+            font-size: 12px;
+            color: #8b949e;
+        }
     </style>
 </head>
 <body>
@@ -123,6 +341,7 @@
         <button onclick="showContent('projet_professionnel')">Projet Professionnel</button>
         <!--<button onclick="showContent('projet_personnel')">Projet Personnel</button>-->
         <button onclick="showContent('CV')">CV</button>
+        <button onclick="showContent('espace')">Mon espace personnel</button>
     </nav>
 
     <div id="accueil" class="content visible">
@@ -1145,6 +1364,124 @@
             <p><p>Graphique analyse SWOT de mon stage de 2ème année</p></p>
         </div>
      </div>
+
+    <div id="espace" class="content hidden">
+        <h2>Mon espace personnel</h2>
+        <p>Une page d'accueil qui regroupe mes services et projets.</p>
+        <div class="espace-grid">
+            <button class="espace-card" onclick="showContent('meteo')">
+                <div class="espace-icon">🌦️</div>
+                <div class="espace-title">Météo</div>
+                <div class="espace-desc">Conditions et prévisions</div>
+            </button>
+            <button class="espace-card" onclick="showModule('🖥️', 'Homelab', 'État des machines')">
+                <div class="espace-icon">🖥️</div>
+                <div class="espace-title">Homelab</div>
+                <div class="espace-desc">État des machines</div>
+            </button>
+            <button class="espace-card" onclick="showContent('cyber')">
+                <div class="espace-icon">🛡️</div>
+                <div class="espace-title">Cyberveille</div>
+                <div class="espace-desc">CVE et alertes</div>
+            </button>
+            <button class="espace-card" onclick="showContent('gaming')">
+                <div class="espace-icon">🎮</div>
+                <div class="espace-title">Gaming</div>
+                <div class="espace-desc">Serveurs et jeux</div>
+            </button>
+            <button class="espace-card" onclick="showContent('dev')">
+                <div class="espace-icon">💻</div>
+                <div class="espace-title">Développement</div>
+                <div class="espace-desc">Projets et commits</div>
+            </button>
+            <button class="espace-card" onclick="showContent('dispo')">
+                <div class="espace-icon">📡</div>
+                <div class="espace-title">Disponibilité</div>
+                <div class="espace-desc">Sites et services web</div>
+            </button>
+        </div>
+    </div>
+
+    <div id="espace-module" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <div style="font-size: 64px; margin-top: 30px;" id="module-icon"></div>
+        <h2 id="module-title"></h2>
+        <p id="module-desc" style="color: #8b949e;"></p>
+        <div class="proof" style="max-width: 600px; margin: 30px auto;">🚧 Ce module est en cours de construction, revenez bientôt !</div>
+    </div>
+
+    <div id="dev" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <h2>Développement</h2>
+        <p style="color: #8b949e;">Mes dépôts et mon activité récente sur <a href="https://github.com/Mewlink8" target="_blank" rel="noopener" style="color: #58a6ff;">GitHub</a>.</p>
+        <div class="meteo-wrapper"><div id="dev-status" class="meteo-small" style="margin: 15px 0;"></div><div id="dev-body" style="text-align: left;"></div></div>
+    </div>
+
+    <div id="cyber" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <h2>Cyberveille</h2>
+        <p style="color: #8b949e;">Alertes, failles exploitées et actualités cybersécurité du jour et de la semaine.</p>
+        <div class="meteo-wrapper"><div id="cyber-status" class="meteo-small" style="margin: 15px 0;"></div><div id="cyber-body" style="text-align: left;"></div></div>
+    </div>
+
+    <div id="gaming" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <h2>Gaming</h2>
+        <p style="color: #8b949e;">Actualités et jeux de la semaine.</p>
+        <div class="meteo-wrapper"><h3>Mes serveurs</h3><div class="proof">🚧 Mes serveurs de jeu arrivent bientôt.</div><div id="gaming-status" class="meteo-small" style="margin: 15px 0;"></div><div id="gaming-body" style="text-align: left;"></div></div>
+    </div>
+
+    <div id="dispo" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <h2>Disponibilité</h2>
+        <p style="color: #8b949e;">État en temps réel de sites et services web.</p>
+        <div class="meteo-wrapper"><div class="meteo-actions"><button onclick="loadModule('dispo', true)">🔄 Actualiser</button></div><div id="dispo-status" class="meteo-small" style="margin: 15px 0;"></div><div id="dispo-body" style="text-align: left;"></div></div>
+    </div>
+
+    <div id="meteo" class="content hidden">
+        <button class="espace-back" onclick="showContent('espace')">← Mon espace personnel</button>
+        <h2>Météo</h2>
+        <div class="meteo-wrapper">
+            <p>Autorisez la localisation pour obtenir la météo de votre position, recherchez une ville, ou cliquez directement sur la carte.</p>
+            <div class="meteo-actions">
+                <button onclick="locateUser()">📍 Me localiser</button>
+                <form id="meteo-search" style="display: flex; gap: 10px;">
+                    <input type="text" id="meteo-city" placeholder="Rechercher une ville..." aria-label="Ville">
+                    <button type="submit">🔎 Rechercher</button>
+                </form>
+            </div>
+            <div id="meteo-map"></div>
+            <div id="meteo-status"></div>
+
+            <div id="meteo-result" class="hidden">
+                <h3 id="meteo-place"></h3>
+                <div class="meteo-now">
+                    <div class="icon" id="meteo-icon"></div>
+                    <div class="temp" id="meteo-temp"></div>
+                    <div class="desc">
+                        <div id="meteo-desc" style="font-size: 20px;"></div>
+                        <div id="meteo-feels" class="meteo-small"></div>
+                        <div id="meteo-minmax" class="meteo-small"></div>
+                        <div id="meteo-time" class="meteo-small"></div>
+                    </div>
+                </div>
+
+                <h3>Conditions actuelles</h3>
+                <div class="meteo-grid" id="meteo-details"></div>
+
+                <h3>Qualité de l'air</h3>
+                <div class="meteo-grid" id="meteo-air"></div>
+
+                <h3>Prochaines 24 heures</h3>
+                <div class="meteo-scroll" id="meteo-hourly"></div>
+
+                <h3>Prévisions sur 7 jours</h3>
+                <div class="meteo-days" id="meteo-daily"></div>
+
+                <p class="meteo-small">Données météo : <a href="https://open-meteo.com" target="_blank" rel="noopener" style="color: #58a6ff;">Open-Meteo.com</a></p>
+            </div>
+        </div>
+    </div>
    
     
     <script>
@@ -1168,6 +1505,458 @@
             subContents.forEach(subContent => {
                 subContent.classList.add('hidden');
             });
+
+            if (MODULES[sectionId]) {
+                loadModule(sectionId);
+            }
+
+            if (sectionId === 'meteo') {
+                initMeteo();
+            }
+        }
+
+        function showModule(icon, title, desc) {
+            showContent('espace-module');
+            document.getElementById('module-icon').textContent = icon;
+            document.getElementById('module-title').textContent = title;
+            document.getElementById('module-desc').textContent = desc;
+        }
+
+        // ----- Modules de l'espace personnel -----
+        const moduleLoaded = {};
+
+        function esc(text) {
+            const el = document.createElement('div');
+            el.textContent = text == null ? '' : String(text);
+            return el.innerHTML;
+        }
+
+        function safeUrl(url) {
+            return /^https?:\/\//.test(url || '') ? esc(url) : '#';
+        }
+
+        function frDate(iso, withTime = false) {
+            if (!iso) return '';
+            const d = new Date(iso);
+            return withTime ? d.toLocaleString('fr-FR', { dateStyle: 'short', timeStyle: 'short' }) : d.toLocaleDateString('fr-FR');
+        }
+
+        function feedList(items, withImages = false) {
+            if (!items || !items.length) return '<p class="meteo-small">Aucune donnée disponible pour le moment.</p>';
+            return '<div class="feed-list">' + items.map(i => `<a class="meteo-card feed-item" href="${safeUrl(i.link)}" target="_blank" rel="noopener">
+                ${withImages && i.image ? `<img src="${safeUrl(i.image)}" alt="" loading="lazy">` : ''}
+                <div><div class="feed-title">${esc(i.title)}</div>
+                <div class="meteo-small"><span class="badge">${esc(i.source)}</span>${frDate(i.date, true)}</div>
+                <div class="meteo-small" style="margin-top: 4px;">${esc(i.description)}</div></div></a>`).join('') + '</div>';
+        }
+
+        function gameGrid(games) {
+            if (!games || !games.length) return '<p class="meteo-small">Aucun jeu disponible.</p>';
+            return '<div class="game-grid">' + games.map(g => `<a class="meteo-card" href="${safeUrl(g.link)}" target="_blank" rel="noopener">
+                <img src="${safeUrl(g.image)}" alt="" loading="lazy">
+                <div class="feed-title" style="margin-top: 6px;">${esc(g.name || g.title)}</div>
+                <div class="meteo-small">${g.discount ? `<span class="badge ok">-${g.discount}%</span><s>${esc(g.originalPrice)}</s> ` : ''}${esc(g.price || '')}
+                ${g.platforms ? `<span class="badge">${esc(g.platforms)}</span>Valeur ${esc(g.worth)}` : ''}</div></a>`).join('') + '</div>';
+        }
+
+        const MODULES = {
+            dev: {
+                async load() {
+                    const [user, repos, events] = await Promise.all([
+                        fetch('https://api.github.com/users/Mewlink8').then(r => r.json()),
+                        fetch('https://api.github.com/users/Mewlink8/repos?sort=pushed&per_page=100').then(r => r.json()),
+                        fetch('https://api.github.com/users/Mewlink8/events/public?per_page=30').then(r => r.json())
+                    ]);
+                    if (!Array.isArray(repos)) throw new Error('GitHub');
+                    const langs = {};
+                    repos.forEach(r => { if (r.language) langs[r.language] = (langs[r.language] || 0) + 1; });
+                    const commits = (Array.isArray(events) ? events : []).filter(e => e.type === 'PushEvent')
+                        .flatMap(e => (e.payload.commits || []).map(c => ({ repo: e.repo.name, msg: c.message, date: e.created_at, sha: c.sha })));
+                    const activity = (Array.isArray(events) ? events : []).slice(0, 10);
+                    return `<div class="meteo-now">
+                            <img src="${safeUrl(user.avatar_url)}" alt="" style="width: 90px; border-radius: 50%;">
+                            <div class="desc"><div style="font-size: 22px; color: #58a6ff;">${esc(user.name || user.login)}</div>
+                            <div class="meteo-small">@${esc(user.login)}${user.bio ? ' · ' + esc(user.bio) : ''}</div>
+                            <div class="meteo-small">Membre depuis ${frDate(user.created_at)}</div></div>
+                        </div>
+                        <div class="meteo-grid">
+                            ${card('📦 Dépôts publics', user.public_repos)}
+                            ${card('👥 Abonnés', user.followers)}
+                            ${card('➡️ Abonnements', user.following)}
+                            ${card('⭐ Étoiles reçues', repos.reduce((n, r) => n + r.stargazers_count, 0))}
+                            ${card('🧠 Langages', esc(Object.entries(langs).sort((a, b) => b[1] - a[1]).map(l => l[0]).join(', ') || '–'))}
+                            ${card('🕒 Dernier push', frDate(repos[0] && repos[0].pushed_at))}
+                        </div>
+                        <h3>Dépôts</h3>
+                        <div class="game-grid">${repos.map(r => `<a class="meteo-card" href="${safeUrl(r.html_url)}" target="_blank" rel="noopener">
+                            <div class="feed-title">${esc(r.name)}</div>
+                            <div class="meteo-small">${esc(r.description || 'Pas de description')}</div>
+                            <div class="meteo-small" style="margin-top: 6px;">${r.language ? `<span class="badge">${esc(r.language)}</span>` : ''}⭐ ${r.stargazers_count} · 🍴 ${r.forks_count}</div>
+                            <div class="meteo-small">Mis à jour le ${frDate(r.pushed_at)}</div></a>`).join('')}</div>
+                        <h3>Derniers commits</h3>
+                        ${commits.length ? '<div class="feed-list">' + commits.slice(0, 10).map(c => `<a class="meteo-card feed-item" href="https://github.com/${esc(c.repo)}/commit/${esc(c.sha)}" target="_blank" rel="noopener">
+                            <div><div class="feed-title">${esc(c.msg.split('\n')[0])}</div><div class="meteo-small"><span class="badge">${esc(c.repo)}</span>${frDate(c.date, true)}</div></div></a>`).join('') + '</div>'
+                            : '<p class="meteo-small">Aucun commit public récent (GitHub ne garde que les 90 derniers jours d\'activité).</p>'}
+                        <h3>Activité récente</h3>
+                        ${activity.length ? '<div class="feed-list">' + activity.map(e => `<div class="meteo-card"><span class="badge">${esc(e.type.replace('Event', ''))}</span>${esc(e.repo.name)} <span class="meteo-small">· ${frDate(e.created_at, true)}</span></div>`).join('') + '</div>'
+                            : '<p class="meteo-small">Aucune activité publique récente.</p>'}`;
+                }
+            },
+            cyber: {
+                async load() {
+                    const d = await fetch('/api/cyberveille').then(r => { if (!r.ok) throw new Error(); return r.json(); });
+                    return `<h3>🚨 Alertes CERT-FR</h3>${feedList(d.alertes)}
+                        <h3>🔥 Failles activement exploitées (CISA KEV)</h3>
+                        ${d.exploited.length ? '<div class="feed-list">' + d.exploited.map(v => `<a class="meteo-card feed-item" href="${safeUrl(v.link)}" target="_blank" rel="noopener"><div>
+                            <div class="feed-title">${esc(v.id)} · ${esc(v.vendor)} ${esc(v.product)}</div>
+                            <div class="meteo-small"><span class="badge ko">Exploitée</span>${v.ransomware ? '<span class="badge warn">Ransomware</span>' : ''}Ajoutée le ${frDate(v.dateAdded)}</div>
+                            <div class="meteo-small" style="margin-top: 4px;">${esc(v.description)}</div></div></a>`).join('') + '</div>' : '<p class="meteo-small">Aucune donnée.</p>'}
+                        <h3>📰 Actualités cybersécurité</h3>${feedList(d.actualites, true)}
+                        <h3>🛡️ Avis de sécurité CERT-FR</h3>${feedList(d.avis)}
+                        <p class="meteo-small">Mis à jour le ${frDate(d.updatedAt, true)} · Sources : CERT-FR, CISA, The Hacker News</p>`;
+                }
+            },
+            gaming: {
+                async load() {
+                    const d = await fetch('/api/gaming').then(r => { if (!r.ok) throw new Error(); return r.json(); });
+                    return `<h3>📰 Actualités jeux vidéo</h3>${feedList(d.news, true)}
+                        <h3>🎁 Jeux gratuits du moment</h3>${gameGrid(d.freeGames)}
+                        <h3>🏆 Meilleures ventes Steam</h3>${gameGrid(d.topSellers)}
+                        <h3>🆕 Nouveautés Steam</h3>${gameGrid(d.newReleases)}
+                        <h3>💸 Promotions Steam</h3>${gameGrid(d.specials)}
+                        <h3>📅 Prochaines sorties</h3>${gameGrid(d.comingSoon)}
+                        <p class="meteo-small">Mis à jour le ${frDate(d.updatedAt, true)} · Sources : Jeuxvideo.com, Gamekult, Steam, GamerPower</p>`;
+                }
+            },
+            dispo: {
+                async load() {
+                    const d = await fetch('/api/disponibilite').then(r => { if (!r.ok) throw new Error(); return r.json(); });
+                    const levels = { none: ['ok', 'Opérationnel'], minor: ['warn', 'Perturbation mineure'], major: ['ko', 'Panne majeure'], critical: ['ko', 'Panne critique'], maintenance: ['warn', 'Maintenance'] };
+                    const up = d.sites.filter(s => s.up).length;
+                    return `<div class="meteo-grid">
+                            ${card('🌐 Sites en ligne', `${up} / ${d.sites.length}`)}
+                            ${card('✅ Services opérationnels', `${d.services.filter(s => s.indicator === 'none').length} / ${d.services.length}`)}
+                        </div>
+                        <h3>🌐 Mes sites surveillés</h3>
+                        <div class="meteo-grid">${d.sites.map(s => `<a class="meteo-card" href="${safeUrl(s.url)}" target="_blank" rel="noopener" style="text-decoration: none;">
+                            <div class="label">${esc(s.name)}</div>
+                            <div class="value"><span class="badge ${s.up ? 'ok' : 'ko'}">${s.up ? 'En ligne' : 'Hors ligne'}</span></div>
+                            <div class="meteo-small">${s.status ? 'HTTP ' + s.status : 'Aucune réponse'}${s.latency != null ? ' · ' + s.latency + ' ms' : ''}</div></a>`).join('')}</div>
+                        <h3>☁️ Services en ligne</h3>
+                        <div class="meteo-grid">${d.services.map(s => {
+                            const [cls, label] = levels[s.indicator] || ['', 'Inconnu'];
+                            return `<a class="meteo-card" href="${safeUrl(s.url)}" target="_blank" rel="noopener" style="text-decoration: none;">
+                                <div class="label">${esc(s.name)}</div>
+                                <div class="value"><span class="badge ${cls}">${label}</span></div>
+                                ${s.degraded.map(c => `<div class="meteo-small">⚠️ ${esc(c.name)}</div>`).join('')}
+                                ${s.incidents.map(i => `<div class="meteo-small">🔴 ${esc(i.name)}</div>`).join('')}</a>`;
+                        }).join('')}</div>
+                        <p class="meteo-small">Vérifié le ${frDate(d.updatedAt, true)}</p>`;
+                }
+            }
+        };
+
+        async function loadModule(id, force = false) {
+            if (moduleLoaded[id] && !force) return;
+            const status = document.getElementById(id + '-status');
+            status.textContent = 'Chargement...';
+            try {
+                document.getElementById(id + '-body').innerHTML = await MODULES[id].load();
+                moduleLoaded[id] = true;
+                status.textContent = '';
+            } catch (err) {
+                status.textContent = 'Impossible de charger les données pour le moment. Réessayez plus tard.';
+            }
+        }
+
+        // ----- Onglet Météo (API Open-Meteo) -----
+        const WEATHER_CODES = {
+            0: ['Ciel dégagé', '☀️', '🌙'],
+            1: ['Plutôt dégagé', '🌤️', '🌙'],
+            2: ['Partiellement nuageux', '⛅', '☁️'],
+            3: ['Couvert', '☁️', '☁️'],
+            45: ['Brouillard', '🌫️', '🌫️'],
+            48: ['Brouillard givrant', '🌫️', '🌫️'],
+            51: ['Bruine légère', '🌦️', '🌧️'],
+            53: ['Bruine modérée', '🌦️', '🌧️'],
+            55: ['Bruine dense', '🌧️', '🌧️'],
+            56: ['Bruine verglaçante légère', '🌧️', '🌧️'],
+            57: ['Bruine verglaçante dense', '🌧️', '🌧️'],
+            61: ['Pluie faible', '🌦️', '🌧️'],
+            63: ['Pluie modérée', '🌧️', '🌧️'],
+            65: ['Pluie forte', '🌧️', '🌧️'],
+            66: ['Pluie verglaçante faible', '🌧️', '🌧️'],
+            67: ['Pluie verglaçante forte', '🌧️', '🌧️'],
+            71: ['Neige faible', '🌨️', '🌨️'],
+            73: ['Neige modérée', '🌨️', '🌨️'],
+            75: ['Neige forte', '❄️', '❄️'],
+            77: ['Grains de neige', '🌨️', '🌨️'],
+            80: ['Averses faibles', '🌦️', '🌧️'],
+            81: ['Averses modérées', '🌧️', '🌧️'],
+            82: ['Averses violentes', '⛈️', '⛈️'],
+            85: ['Averses de neige faibles', '🌨️', '🌨️'],
+            86: ['Averses de neige fortes', '❄️', '❄️'],
+            95: ['Orage', '⛈️', '⛈️'],
+            96: ['Orage avec grêle faible', '⛈️', '⛈️'],
+            99: ['Orage avec grêle forte', '⛈️', '⛈️']
+        };
+
+        let meteoMap = null;
+        let meteoMarker = null;
+        let meteoAsked = false;
+
+        function weatherInfo(code, isDay = 1) {
+            const info = WEATHER_CODES[code] || ['Inconnu', '❔', '❔'];
+            return { label: info[0], icon: isDay ? info[1] : info[2] };
+        }
+
+        function windDirection(deg) {
+            const dirs = ['N', 'NNE', 'NE', 'ENE', 'E', 'ESE', 'SE', 'SSE', 'S', 'SSO', 'SO', 'OSO', 'O', 'ONO', 'NO', 'NNO'];
+            return dirs[Math.round(deg / 22.5) % 16];
+        }
+
+        function uvLabel(uv) {
+            if (uv < 3) return 'Faible';
+            if (uv < 6) return 'Modéré';
+            if (uv < 8) return 'Élevé';
+            if (uv < 11) return 'Très élevé';
+            return 'Extrême';
+        }
+
+        function aqiLabel(aqi) {
+            if (aqi <= 20) return 'Bon';
+            if (aqi <= 40) return 'Correct';
+            if (aqi <= 60) return 'Moyen';
+            if (aqi <= 80) return 'Médiocre';
+            if (aqi <= 100) return 'Très médiocre';
+            return 'Extrêmement médiocre';
+        }
+
+        function fmt(value, unit, digits = 0) {
+            if (value === null || value === undefined || Number.isNaN(value)) return '–';
+            return `${Number(value).toFixed(digits)} ${unit}`.trim();
+        }
+
+        function hourOf(iso) {
+            return iso.slice(11, 16);
+        }
+
+        function setMeteoStatus(message, isError = false) {
+            const status = document.getElementById('meteo-status');
+            status.textContent = message;
+            status.classList.toggle('error', isError);
+        }
+
+        function initMeteo() {
+            if (!meteoMap) {
+                meteoMap = L.map('meteo-map').setView([46.6, 2.4], 5);
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    maxZoom: 19,
+                    attribution: '&copy; OpenStreetMap'
+                }).addTo(meteoMap);
+                meteoMap.on('click', e => loadWeather(e.latlng.lat, e.latlng.lng));
+
+                document.getElementById('meteo-search').addEventListener('submit', e => {
+                    e.preventDefault();
+                    searchCity(document.getElementById('meteo-city').value.trim());
+                });
+            }
+            // La carte est créée dans une section cachée : on recalcule sa taille une fois affichée
+            setTimeout(() => meteoMap.invalidateSize(), 50);
+
+            if (!meteoAsked) {
+                meteoAsked = true;
+                locateUser();
+            }
+        }
+
+        function locateUser() {
+            if (!navigator.geolocation) {
+                setMeteoStatus("La géolocalisation n'est pas supportée par votre navigateur. Recherchez une ville ou cliquez sur la carte.", true);
+                return;
+            }
+            setMeteoStatus('Demande de votre localisation...');
+            navigator.geolocation.getCurrentPosition(
+                pos => loadWeather(pos.coords.latitude, pos.coords.longitude),
+                () => setMeteoStatus('Localisation refusée ou indisponible. Recherchez une ville ou cliquez sur la carte.', true),
+                { enableHighAccuracy: true, timeout: 10000 }
+            );
+        }
+
+        async function searchCity(name) {
+            if (!name) return;
+            setMeteoStatus(`Recherche de « ${name} »...`);
+            try {
+                const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(name)}&count=1&language=fr&format=json`);
+                const data = await res.json();
+                if (!data.results || data.results.length === 0) {
+                    setMeteoStatus(`Aucune ville trouvée pour « ${name} ».`, true);
+                    return;
+                }
+                const city = data.results[0];
+                const place = [city.name, city.admin1, city.country].filter(Boolean).join(', ');
+                loadWeather(city.latitude, city.longitude, place);
+            } catch (err) {
+                setMeteoStatus('Erreur lors de la recherche de la ville.', true);
+            }
+        }
+
+        async function reverseGeocode(lat, lon) {
+            try {
+                const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=10&accept-language=fr`);
+                const data = await res.json();
+                const a = data.address || {};
+                const city = a.city || a.town || a.village || a.municipality || a.county;
+                return [city, a.state, a.country].filter(Boolean).join(', ') || null;
+            } catch (err) {
+                return null;
+            }
+        }
+
+        async function loadWeather(lat, lon, placeName) {
+            setMeteoStatus('Chargement de la météo...');
+
+            if (meteoMarker) {
+                meteoMarker.setLatLng([lat, lon]);
+            } else {
+                meteoMarker = L.marker([lat, lon]).addTo(meteoMap);
+            }
+            meteoMap.setView([lat, lon], Math.max(meteoMap.getZoom(), 9));
+
+            const current = [
+                'temperature_2m', 'relative_humidity_2m', 'apparent_temperature', 'is_day',
+                'precipitation', 'rain', 'showers', 'snowfall', 'weather_code', 'cloud_cover',
+                'pressure_msl', 'surface_pressure', 'wind_speed_10m', 'wind_direction_10m', 'wind_gusts_10m'
+            ].join(',');
+            const hourly = [
+                'temperature_2m', 'weather_code', 'precipitation_probability', 'precipitation',
+                'wind_speed_10m', 'relative_humidity_2m', 'dew_point_2m', 'visibility', 'uv_index', 'is_day'
+            ].join(',');
+            const daily = [
+                'weather_code', 'temperature_2m_max', 'temperature_2m_min', 'sunrise', 'sunset',
+                'daylight_duration', 'uv_index_max', 'precipitation_sum', 'precipitation_probability_max',
+                'wind_speed_10m_max', 'wind_gusts_10m_max', 'wind_direction_10m_dominant'
+            ].join(',');
+
+            const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}`
+                + `&current=${current}&hourly=${hourly}&daily=${daily}&timezone=auto&forecast_days=7`;
+            const airUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat}&longitude=${lon}`
+                + `&current=european_aqi,pm10,pm2_5,ozone,nitrogen_dioxide,carbon_monoxide&timezone=auto`;
+
+            try {
+                const [weatherRes, airRes, place] = await Promise.all([
+                    fetch(weatherUrl),
+                    fetch(airUrl).catch(() => null),
+                    placeName ? Promise.resolve(placeName) : reverseGeocode(lat, lon)
+                ]);
+                if (!weatherRes.ok) throw new Error('API météo indisponible');
+                const weather = await weatherRes.json();
+                const air = airRes && airRes.ok ? await airRes.json() : null;
+
+                renderWeather(weather, air, place || `${lat.toFixed(3)}, ${lon.toFixed(3)}`);
+                const popupTitle = document.createElement('b');
+                popupTitle.textContent = place || 'Position sélectionnée';
+                meteoMarker.bindPopup(`${popupTitle.outerHTML}<br>${Math.round(weather.current.temperature_2m)} °C`).openPopup();
+                setMeteoStatus('');
+            } catch (err) {
+                setMeteoStatus('Impossible de récupérer la météo pour le moment. Réessayez plus tard.', true);
+            }
+        }
+
+        function card(label, value) {
+            return `<div class="meteo-card"><div class="label">${label}</div><div class="value">${value}</div></div>`;
+        }
+
+        function renderWeather(w, air, place) {
+            const c = w.current;
+            const d = w.daily;
+            const h = w.hourly;
+            const now = weatherInfo(c.weather_code, c.is_day);
+
+            // Index de l'heure courante dans les données horaires
+            let hIdx = h.time.findIndex(t => t >= c.time.slice(0, 13) + ':00');
+            if (hIdx < 0) hIdx = 0;
+
+            document.getElementById('meteo-place').textContent = place;
+            document.getElementById('meteo-icon').textContent = now.icon;
+            document.getElementById('meteo-temp').textContent = `${Math.round(c.temperature_2m)} °C`;
+            document.getElementById('meteo-desc').textContent = now.label;
+            document.getElementById('meteo-feels').textContent = `Ressenti ${Math.round(c.apparent_temperature)} °C`;
+            document.getElementById('meteo-minmax').textContent = `Min ${Math.round(d.temperature_2m_min[0])} °C · Max ${Math.round(d.temperature_2m_max[0])} °C`;
+            document.getElementById('meteo-time').textContent = `Mis à jour à ${hourOf(c.time)} (${w.timezone_abbreviation || w.timezone})`;
+
+            document.getElementById('meteo-details').innerHTML = [
+                card('🌡️ Température', fmt(c.temperature_2m, '°C', 1)),
+                card('🤒 Ressenti', fmt(c.apparent_temperature, '°C', 1)),
+                card('💧 Humidité', fmt(c.relative_humidity_2m, '%')),
+                card('💦 Point de rosée', fmt(h.dew_point_2m[hIdx], '°C', 1)),
+                card('💨 Vent', fmt(c.wind_speed_10m, 'km/h')),
+                card('🌬️ Rafales', fmt(c.wind_gusts_10m, 'km/h')),
+                card('🧭 Direction du vent', `${windDirection(c.wind_direction_10m)} (${c.wind_direction_10m}°)`),
+                card('☁️ Couverture nuageuse', fmt(c.cloud_cover, '%')),
+                card('🌧️ Précipitations', fmt(c.precipitation, 'mm', 1)),
+                card('☔ Pluie', fmt(c.rain + c.showers, 'mm', 1)),
+                card('❄️ Neige', fmt(c.snowfall, 'cm', 1)),
+                card('🎲 Risque de pluie', fmt(h.precipitation_probability[hIdx], '%')),
+                card('📊 Pression (mer)', fmt(c.pressure_msl, 'hPa')),
+                card('⛰️ Pression (sol)', fmt(c.surface_pressure, 'hPa')),
+                card('👁️ Visibilité', fmt(h.visibility[hIdx] / 1000, 'km', 1)),
+                card('🕶️ Indice UV', `${fmt(h.uv_index[hIdx], '', 1)} (${uvLabel(h.uv_index[hIdx])})`),
+                card('🌅 Lever du soleil', hourOf(d.sunrise[0])),
+                card('🌇 Coucher du soleil', hourOf(d.sunset[0])),
+                card('⏱️ Durée du jour', `${Math.floor(d.daylight_duration[0] / 3600)} h ${Math.round((d.daylight_duration[0] % 3600) / 60)} min`),
+                card('📍 Coordonnées', `${w.latitude.toFixed(2)}, ${w.longitude.toFixed(2)}`),
+                card('🏔️ Altitude', fmt(w.elevation, 'm'))
+            ].join('');
+
+            const airEl = document.getElementById('meteo-air');
+            if (air && air.current) {
+                const a = air.current;
+                airEl.innerHTML = [
+                    card('🌍 Indice européen (AQI)', `${fmt(a.european_aqi, '')} (${aqiLabel(a.european_aqi)})`),
+                    card('🟤 PM10', fmt(a.pm10, 'µg/m³', 1)),
+                    card('⚫ PM2.5', fmt(a.pm2_5, 'µg/m³', 1)),
+                    card('🔵 Ozone (O₃)', fmt(a.ozone, 'µg/m³')),
+                    card('🟠 Dioxyde d\'azote (NO₂)', fmt(a.nitrogen_dioxide, 'µg/m³', 1)),
+                    card('⚪ Monoxyde de carbone (CO)', fmt(a.carbon_monoxide, 'µg/m³'))
+                ].join('');
+            } else {
+                airEl.innerHTML = '<p class="meteo-small">Qualité de l\'air indisponible pour cette position.</p>';
+            }
+
+            let hourlyHtml = '';
+            for (let i = hIdx; i < Math.min(hIdx + 24, h.time.length); i++) {
+                const info = weatherInfo(h.weather_code[i], h.is_day[i]);
+                hourlyHtml += `<div class="meteo-card" title="${info.label}">
+                    <div class="label">${hourOf(h.time[i])}</div>
+                    <div style="font-size: 28px;">${info.icon}</div>
+                    <div class="value">${Math.round(h.temperature_2m[i])}°</div>
+                    <div class="meteo-small">💧 ${h.precipitation_probability[i] ?? 0}%</div>
+                    <div class="meteo-small">💨 ${Math.round(h.wind_speed_10m[i])} km/h</div>
+                </div>`;
+            }
+            document.getElementById('meteo-hourly').innerHTML = hourlyHtml;
+
+            let dailyHtml = '';
+            for (let i = 0; i < d.time.length; i++) {
+                const info = weatherInfo(d.weather_code[i]);
+                const date = new Date(d.time[i] + 'T12:00:00');
+                const dayName = i === 0 ? "Aujourd'hui" : date.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'short' });
+                dailyHtml += `<div class="meteo-card">
+                    <div class="label" style="text-transform: capitalize;">${dayName}</div>
+                    <div style="font-size: 36px;">${info.icon}</div>
+                    <div>${info.label}</div>
+                    <div class="value">${Math.round(d.temperature_2m_min[i])}° / ${Math.round(d.temperature_2m_max[i])}°</div>
+                    <div class="meteo-small">🌧️ ${fmt(d.precipitation_sum[i], 'mm', 1)} (${d.precipitation_probability_max[i] ?? 0}%)</div>
+                    <div class="meteo-small">💨 ${Math.round(d.wind_speed_10m_max[i])} km/h ${windDirection(d.wind_direction_10m_dominant[i])}</div>
+                    <div class="meteo-small">🌬️ Rafales ${Math.round(d.wind_gusts_10m_max[i])} km/h</div>
+                    <div class="meteo-small">🕶️ UV ${fmt(d.uv_index_max[i], '', 1)}</div>
+                    <div class="meteo-small">🌅 ${hourOf(d.sunrise[i])} · 🌇 ${hourOf(d.sunset[i])}</div>
+                </div>`;
+            }
+            document.getElementById('meteo-daily').innerHTML = dailyHtml;
+
+            document.getElementById('meteo-result').classList.remove('hidden');
         }
 
 
